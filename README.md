@@ -1,2 +1,2 @@
-# py_toolbox
-some image pre-processing programs..
+# lora training toolbox
+some image pre-processing programs for lora training..
