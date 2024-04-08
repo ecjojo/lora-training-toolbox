@@ -1,7 +1,8 @@
+import random
 from PIL import Image
 import os
 
-def add_white_background(input_folder, output_folder):
+def add_background(input_folder, output_folder):
     # 檢查輸出文件夾是否存在，如果不存在則創建它
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
@@ -19,9 +20,10 @@ def add_white_background(input_folder, output_folder):
             image = Image.open(input_path).convert("RGBA")
             
 
-            
-            # 創建一個新的白色背景圖像
-            background = Image.new('RGB', image.size, (255, 255, 255))
+
+             # Generate a random choice between white and black background
+            background_color = (0, 0, 0) if random.choice([True, False]) else (255, 255, 255)
+            background = Image.new('RGB', image.size, background_color)
             # 將原始圖像粘貼到白色背景上
             background.paste(image, (0, 0), image)
 
@@ -38,4 +40,4 @@ input_folder = 'input'
 output_folder = 'output'
 
 # 執行函數
-add_white_background(input_folder, output_folder)
+add_background(input_folder, output_folder)
